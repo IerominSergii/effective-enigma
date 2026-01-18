@@ -38,7 +38,7 @@ jobs:
       - name: Echo test success/failure status
         run: echo ${{ steps.run-tests.outcome }}
       - name: Upload test report
-        if: steps.run-tests.outcome == 'failure'
+        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
