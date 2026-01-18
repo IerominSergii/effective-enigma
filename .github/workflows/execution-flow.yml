@@ -36,6 +36,7 @@ jobs:
         id: run-tests
         run: npm run test
       - name: Echo test success/failure status
+        if: failure() && steps.run-tests.outcome == 'failure'
         run: echo ${{ steps.run-tests.outcome }}
       - name: Upload test report
         if: failure() && steps.run-tests.outcome == 'failure'
