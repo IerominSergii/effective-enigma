@@ -37,7 +37,7 @@ jobs:
         run: npm run test
       - name: Echo test success/failure status
         if: failure() && steps.run-tests.outcome == 'failure'
-        run: echo ${{ steps.run-tests }}
+        run: echo ${{  toJson(steps.run-tests) }}
       - name: Upload test report
         if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
